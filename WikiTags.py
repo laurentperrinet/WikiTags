@@ -20,7 +20,7 @@ BANDS = ['Talking Heads',
          ]
 VERB = True
 N_X, N_Y = 8, 13 # columns, rows
-RESULT = './grid.jpg'
+RESULT = './grid.png'
 
 # generating a bunch of new names
 ## extracting both sides
@@ -74,7 +74,7 @@ import matplotlib.pyplot as plt
 
 # Config:
 dpi = 100 # dots per inches
-figsize = 400/dpi # in inches
+figsize = 200/dpi # in inches
 
 # Create plt plot:
 fig, axs = plt.subplots(N_Y, N_X,
@@ -93,7 +93,6 @@ for ii, i_band in enumerate(ind_bands[:(N_X*N_Y)]):
 
     ax = axs[y_position, x_position]
     ax.imshow(plt_image, cmap=plt.gray())
-    ax.suptitle(s1 + s2)
     # Hide grid lines
     ax.grid(False)
 
