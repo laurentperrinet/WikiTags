@@ -1,7 +1,7 @@
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
 
-ROOT = 'https://github.com/laurentperrinet/WikiTags/wiki/'
+ROOT = 'https://github.com/laurentperrinet/WT_cave/wiki/'
 SEED = 42
 BANDS = ['Talking Heads',
          'Dépèche Mode',
