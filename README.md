@@ -2,10 +2,9 @@
 
 > Beware: for use in real-life!
 
-Whenever you need to create custom-made tags for storage, archival, ... you may want to use a system of labels for which you read or write its content.
+Whenever you need to create custom-made tags for storage, archival, tupperware©, ... you may want to use a system of labels which you can read or write.
 
-The solution taken here is to create a set of QR codes that you can stick on any object and which each point to a wiki, that is an editable page: Scan it with your phone to see what the tag points to.
-
+This small script creates a set of QR codes that you can stick on any object. Each point to the URL of a wiki (that is an editable page): Scan it with your phone to see what the tag points to and maybe edit it.
 
 ![all you need](grid.png)
 
