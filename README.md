@@ -4,6 +4,11 @@ For use in real-life, whenever you need to create tags for storage, archival, ..
 
 Scan it with your phone to see what the tag points to.
 
+
+![grid.png](all you need)
+
+## under the hood
+
 ## server side:
 
 - [GitHub' wiki system](https://help.github.com/en/github/building-a-strong-community/about-wikis)
@@ -13,3 +18,5 @@ Scan it with your phone to see what the tag points to.
 ## client side:
 
 - use the python script to generate a set of QR codes to your wiki. Be sure to properly set up the root
+- print the `grid.png` file (preferentially on sticker) and cut the different QR codes
+- stick them all over the place!

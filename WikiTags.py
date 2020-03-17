@@ -18,9 +18,13 @@ BANDS = ['Talking Heads',
          'Rolling Stones',
          'Stone Roses',
          ]
-VERB = True
+VERB = True # verbose?
+VERB = False # verbose?
+N_X, N_Y = 5, 8 # columns, rows
 N_X, N_Y = 8, 13 # columns, rows
-RESULT = './grid.png'
+RESULT = './grid.png' # name of the output file
+MARGIN = 0.05 # margin around each axis
+FONTSIZE = 14 # fontsize of the title of each axis
 
 # generating a bunch of new names
 ## extracting both sides
@@ -60,7 +64,7 @@ for i_band in ind_bands:
         print('Generating', figname)
         url = ROOT + s1 + s2
         code = pyqrcode.create(url)
-        code.png(figname, scale=5)
+        code.png(figname, scale=3)
 
 # alternatives
 # image_as_str = code.png_as_base64_str(scale=5)
@@ -74,25 +78,26 @@ import matplotlib.pyplot as plt
 
 # Config:
 dpi = 100 # dots per inches
-figsize = 200/dpi # in inches
+figsize = 800/dpi # in inches
 
 # Create plt plot:
 fig, axs = plt.subplots(N_Y, N_X,
                         figsize=(N_X*figsize, N_Y*figsize))
 
-print(len(axs), len(axs[0]))
 for ii, i_band in enumerate(ind_bands[:(N_X*N_Y)]):
     s1, s2 = bands_list[i_band]
     figname = os.path.join('/tmp', s1 + s2 + '.png')
+    url = ROOT + s1 + s2
 
     x_position = ii % N_X
     y_position = ii // N_X
-    print(ii, '/ (', x_position, ',', y_position, ') : ', figname)
+    if VERB: print(ii, '/ (', x_position, ',', y_position, ') : ', figname)
 
     plt_image = plt.imread(figname)
 
     ax = axs[y_position, x_position]
-    ax.imshow(plt_image, cmap=plt.gray())
+    ax.imshow(plt_image, interpolation='nearest', cmap=plt.gray())
+    ax.text(.5, 1-MARGIN, url, horizontalalignment='center',  fontsize=FONTSIZE, transform=ax.transAxes)
     # Hide grid lines
     ax.grid(False)
 
@@ -100,6 +105,5 @@ for ii, i_band in enumerate(ind_bands[:(N_X*N_Y)]):
     ax.set_xticks([])
     ax.set_yticks([])
 
-margin = 0.05
-plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0, hspace=margin/2, wspace=margin/2)
+plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0, hspace=MARGIN/2, wspace=MARGIN/2)
 plt.savefig(RESULT, dpi=dpi)
