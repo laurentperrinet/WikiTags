@@ -4,12 +4,12 @@ For use in real-life, whenever you need to create tags for storage, archival, ..
 
 Scan it with your phone to see what the tag points to.
 
-server side:
+## server side:
 
+- [GitHub' wiki system](https://help.github.com/en/github/building-a-strong-community/about-wikis)
 - https://wiki.js.org/
 
 
-client side:
+## client side:
 
-- use the pythonn script to generate a set of QR codes to your wiki
-
+- use the python script to generate a set of QR codes to your wiki. Be sure to properly set up the root
