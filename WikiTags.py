@@ -19,7 +19,7 @@ BANDS = ['Talking Heads',
          'Stone Roses',
          ]
 VERB = True
-N_X, N_Y = 8, 15 # columns, rows
+N_X, N_Y = 8, 13 # columns, rows
 RESULT = './grid.jpg'
 
 # generating a bunch of new names
@@ -90,7 +90,17 @@ for ii, i_band in enumerate(ind_bands[:(N_X*N_Y)]):
     print(ii, '/ (', x_position, ',', y_position, ') : ', figname)
 
     plt_image = plt.imread(figname)
-    axs[y_position, x_position].imshow(plt_image, cmap=plt.gray())
 
-plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0)
+    ax = axs[y_position, x_position]
+    ax.imshow(plt_image, cmap=plt.gray())
+    ax.suptitle(s1 + s2)
+    # Hide grid lines
+    ax.grid(False)
+
+    # Hide axes ticks
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+margin = 0.05
+plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0, hspace=margin/2, wspace=margin/2)
 plt.savefig(RESULT, dpi=dpi)
