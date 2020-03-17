@@ -1,21 +1,30 @@
-# WikiTags: Lightweight tagging system for real life
+# WikiTags: Editable tagging system for real life
 
-For use in real-life, whenever you need to create tags for storage, archival, ... you may use a system of labels which you write to its content. Here, we aim at creating a set of QR codes that you can stick on any object (created on the client side) and a wiki which contain an editable database for the contents.
+> Beware: for use in real-life!
 
-Scan it with your phone to see what the tag points to.
+Whenever you need to create custom-made tags for storage, archival, ... you may want to use a system of labels for which you read or write its content.
+
+The solution taken here is to create a set of QR codes that you can stick on any object and which each point to a wiki, that is an editable page: Scan it with your phone to see what the tag points to.
 
 
 ![all you need](grid.png)
 
+## FAQ
+
+### how do I install it?
+
+Fork the repo, adapt the `WikiTags.py` script to your needs, run it and print the resulting file.
+
 ## under the hood
 
-## server side:
+
+### server side:
 
 - [GitHub' wiki system](https://help.github.com/en/github/building-a-strong-community/about-wikis)
-- https://wiki.js.org/
+-  alternative = https://wiki.js.org/
 
 
-## client side:
+### client side:
 
 - use the python script to generate a set of QR codes to your wiki. Be sure to properly set up the root
 - print the `grid.png` file (preferentially on sticker) and cut the different QR codes
