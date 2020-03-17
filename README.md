@@ -5,7 +5,7 @@ For use in real-life, whenever you need to create tags for storage, archival, ..
 Scan it with your phone to see what the tag points to.
 
 
-![all you need](https://github.com/laurentperrinet/WikiTags/raw/master/grid.png)
+![all you need](grid.png)
 
 ## under the hood
 
