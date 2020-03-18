@@ -1,5 +1,6 @@
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
+import numpy as np
 
 ROOT = 'https://github.com/laurentperrinet/WT_cave/wiki/'
 SEED = 42
@@ -22,9 +23,11 @@ VERB = True # verbose?
 VERB = False # verbose?
 N_X, N_Y = 5, 8 # columns, rows
 N_X, N_Y = 8, 13 # columns, rows
+N_X, N_Y = 5, 7 # columns, rows
 RESULT = './grid.png' # name of the output file
 MARGIN = 0.05 # margin around each axis
 FONTSIZE = 14 # fontsize of the title of each axis
+PAPER_RATIO = np.sqrt(2)
 
 # generating a bunch of new names
 ## extracting both sides
@@ -38,7 +41,6 @@ if VERB: print(bands_pre, bands_post)
 ## shuffling them
 import itertools
 bands_list = list(itertools.product(bands_pre, bands_post))
-import numpy as np
 np.random.seed(SEED)
 ind_bands = np.random.permutation(len(BANDS)**2)
 if VERB:
