@@ -112,6 +112,7 @@ for page in range(PAGES):
         ax = axs[y_position, x_position]
         ax.imshow(plt_image, interpolation='nearest', cmap=plt.gray())
         ax.text(.5, 1-MARGIN, url, horizontalalignment='center',  fontsize=FONTSIZE, transform=ax.transAxes)
+        ax.text(.5, MARGIN/3, s1 + s2, horizontalalignment='center',  fontsize=FONTSIZE*3, transform=ax.transAxes)
         # Hide grid lines
         ax.grid(False)
 
