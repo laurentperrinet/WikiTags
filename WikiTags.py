@@ -1,8 +1,11 @@
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
-import numpy as np
 
-ROOT = 'https://github.com/laurentperrinet/WT_cave/wiki/'
+import subprocess
+URL = subprocess.check_output(['git', 'remote',  'get-url', 'origin']).decode()
+URL = URL.split('.git')[0] # stripping last bit given by github
+ROOT = URL + '/wiki/'
+print('ROOT =', ROOT)
 SEED = 42
 BANDS = ['Talking Heads',
          'Dépèche Mode',
@@ -27,6 +30,7 @@ N_X, N_Y = 5, 7 # columns, rows
 RESULT = './grid.png' # name of the output file
 MARGIN = 0.05 # margin around each axis
 FONTSIZE = 14 # fontsize of the title of each axis
+import numpy as np
 PAPER_RATIO = np.sqrt(2)
 
 # generating a bunch of new names
