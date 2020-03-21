@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
+
+import sys
+print('ENCODING: ', sys.getfilesystemencoding())
 
 import subprocess
 URL = subprocess.check_output(['git', 'remote',  'get-url', 'origin']).decode()
