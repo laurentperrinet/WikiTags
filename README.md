@@ -6,7 +6,7 @@ Whenever you need to create custom-made tags for storage, archival, tupperware©
 
 This small script creates a set of QR codes that you can stick on any object. Each point to the URL of a wiki (that is an editable page): Scan it with your phone to see what the tag points to and maybe edit it.
 
-![all you need](grid.png)
+![all you need](wikitags_grid.png)
 
 ## FAQ
 
