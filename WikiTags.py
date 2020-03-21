@@ -1,8 +1,11 @@
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
-import numpy as np
 
-ROOT = 'https://github.com/laurentperrinet/WT_cave/wiki/'
+import subprocess
+URL = subprocess.check_output(['git', 'remote',  'get-url', 'origin']).decode()
+URL = URL.split('.git')[0] # stripping last bit given by github
+ROOT = URL + '/wiki/'
+print('ROOT =', ROOT)
 SEED = 42
 BANDS = ['Talking Heads',
          'Dépèche Mode',
@@ -24,10 +27,13 @@ VERB = False # verbose?
 N_X, N_Y = 5, 8 # columns, rows
 N_X, N_Y = 8, 13 # columns, rows
 N_X, N_Y = 5, 7 # columns, rows
-RESULT = './grid.png' # name of the output file
+EXT = '.png'
+RESULT = './grid' + EXT # name of the output file
 MARGIN = 0.05 # margin around each axis
 FONTSIZE = 14 # fontsize of the title of each axis
+import numpy as np
 PAPER_RATIO = np.sqrt(2)
+PAGES = 4
 
 # generating a bunch of new names
 ## extracting both sides
@@ -53,6 +59,11 @@ if VERB:
     url = ROOT + s1 + s2
     print(url)
 
+
+import tempfile
+# print("Current temp directory:", tempfile.gettempdir())
+tmp = tempfile.gettempdir()
+
 import os
 import pyqrcode
 # https://pythonhosted.org/PyQRCode/rendering.html
@@ -61,7 +72,7 @@ import pyqrcode
 
 for i_band in ind_bands:
     s1, s2 = bands_list[i_band]
-    figname = os.path.join('/tmp', s1 + s2 + '.png')
+    figname = os.path.join(tmp, s1 + s2 + '.png')
     if not os.path.isfile(figname):
         print('Generating', figname)
         url = ROOT + s1 + s2
@@ -82,30 +93,36 @@ import matplotlib.pyplot as plt
 dpi = 100 # dots per inches
 figsize = 800/dpi # in inches
 
-# Create plt plot:
-fig, axs = plt.subplots(N_Y, N_X,
-                        figsize=(N_X*figsize, N_Y*figsize))
+for page in range(PAGES):
+    # Create plt plot:
+    fig, axs = plt.subplots(N_Y, N_X,
+                            figsize=(N_X*figsize, N_Y*figsize))
 
-for ii, i_band in enumerate(ind_bands[:(N_X*N_Y)]):
-    s1, s2 = bands_list[i_band]
-    figname = os.path.join('/tmp', s1 + s2 + '.png')
-    url = ROOT + s1 + s2
+    for ii, i_band in enumerate(ind_bands[page*(N_X*N_Y):(page+1)*(N_X*N_Y)]):
+        s1, s2 = bands_list[i_band]
+        figname = os.path.join(tmp, s1 + s2 + '.png')
+        url = ROOT + s1 + s2
 
-    x_position = ii % N_X
-    y_position = ii // N_X
-    if VERB: print(ii, '/ (', x_position, ',', y_position, ') : ', figname)
+        x_position = ii % N_X
+        y_position = ii // N_X
+        if VERB: print(ii, '/ (', x_position, ',', y_position, ') : ', figname)
 
-    plt_image = plt.imread(figname)
+        plt_image = plt.imread(figname)
 
-    ax = axs[y_position, x_position]
-    ax.imshow(plt_image, interpolation='nearest', cmap=plt.gray())
-    ax.text(.5, 1-MARGIN, url, horizontalalignment='center',  fontsize=FONTSIZE, transform=ax.transAxes)
-    # Hide grid lines
-    ax.grid(False)
+        ax = axs[y_position, x_position]
+        ax.imshow(plt_image, interpolation='nearest', cmap=plt.gray())
+        ax.text(.5, 1-MARGIN, url, horizontalalignment='center',  fontsize=FONTSIZE, transform=ax.transAxes)
+        ax.text(.5, MARGIN/3, s1 + s2, horizontalalignment='center',  fontsize=FONTSIZE*3, transform=ax.transAxes)
+        # Hide grid lines
+        ax.grid(False)
 
-    # Hide axes ticks
-    ax.set_xticks([])
-    ax.set_yticks([])
+        # Hide axes ticks
+        ax.set_xticks([])
+        ax.set_yticks([])
 
-plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0, hspace=MARGIN/2, wspace=MARGIN/2)
-plt.savefig(RESULT, dpi=dpi)
+    if page==0:
+        RESULT_ = RESULT
+    else:
+        RESULT_ = RESULT.replace(EXT, '_' + str(page) + EXT)
+    plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0, hspace=MARGIN/2, wspace=MARGIN/2)
+    plt.savefig(RESULT_, dpi=dpi)
