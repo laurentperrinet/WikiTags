@@ -4,6 +4,9 @@ __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
 
 import sys
+# sys.setdefaultencoding() does not exist, here!
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 print('ENCODING: ', sys.getfilesystemencoding())
 
 import subprocess
