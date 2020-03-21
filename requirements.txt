@@ -1,3 +1,4 @@
+pypng
 pyqrcode
 matplotlib
 numpy
