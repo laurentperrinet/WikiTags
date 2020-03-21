@@ -3,7 +3,9 @@
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
 
+# https://stackoverflow.com/questions/2276200/changing-default-encoding-of-python
 import sys
+print('ENCODING: ', sys.getfilesystemencoding())
 # sys.setdefaultencoding() does not exist, here!
 reload(sys)  # Reload does the trick!
 sys.setdefaultencoding('UTF8')
