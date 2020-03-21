@@ -7,6 +7,7 @@ __licence__ = 'MIT'
 import sys
 print('ENCODING: ', sys.getfilesystemencoding())
 # sys.setdefaultencoding() does not exist, here!
+import importlib
 reload(sys)  # Reload does the trick!
 sys.setdefaultencoding('UTF8')
 print('ENCODING: ', sys.getfilesystemencoding())
