@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 image: ubuntu
 
+env:
+  - LC_ALL="en_US.utf-8"
+  - LC_ALL="en_US.ascii"
+
 stages:
   - build
 
