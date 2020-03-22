@@ -3,14 +3,6 @@
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
 
-# https://stackoverflow.com/questions/2276200/changing-default-encoding-of-python
-import sys
-print('ENCODING: ', sys.getfilesystemencoding())
-# sys.setdefaultencoding() does not exist, here!
-import importlib
-reload(sys)  # Reload does the trick!
-sys.setdefaultencoding('UTF8')
-print('ENCODING: ', sys.getfilesystemencoding())
 
 import subprocess
 URL = subprocess.check_output(['git', 'remote',  'get-url', 'origin']).decode()
@@ -29,7 +21,7 @@ ROOT = 'https://framagit.org/laurentperrinet/wikitags/wikis/'
 print('ROOT =', ROOT)
 SEED = 42
 BANDS = ['Talking Heads',
-         'Dépèche Mode',
+         # 'Dépèche Mode',
          'Dead Kennedys',
          'Neil Young',
          'Bob Dylan',
