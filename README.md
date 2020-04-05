@@ -1,5 +1,7 @@
 # WikiTags: Editable tagging system for real life
 
+![Python application](https://github.com/laurentperrinet/WikiTags/workflows/Python%20application/badge.svg)
+
 > Beware: for use in real-life!
 
 Whenever you need to create custom-made tags for storage, archival, tupperware©, ... you may want to use a system of labels which you can read or write.
