@@ -16,9 +16,10 @@ if 'framagit' in URL:
     ROOT = URL + '/wikis/'
 else:
     ROOT = URL + '/wiki/'
+
 print('ROOT =', ROOT)
-ROOT = 'https://framagit.org/laurentperrinet/wikitags/wikis/'
-print('ROOT =', ROOT)
+# ROOT = 'https://framagit.org/laurentperrinet/wikitags/wikis/'
+# print('ROOT =', ROOT)
 SEED = 42
 BANDS = ['Talking Heads',
          # 'Dépèche Mode',
