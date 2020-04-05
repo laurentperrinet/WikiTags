@@ -38,4 +38,5 @@ jobs:
     - name: Uplaoding results
       uses: actions/upload-artifact@master
       with:
-        path: wikitags_grid.png
+        name: Image of QR codes
+        path: output
