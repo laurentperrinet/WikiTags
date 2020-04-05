@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 __author__ = "Laurent Perrinet"
 __licence__ = 'MIT'
+
 
 import subprocess
 URL = subprocess.check_output(['git', 'remote',  'get-url', 'origin']).decode()
@@ -7,16 +10,18 @@ URL = URL.strip('\n') # stripping last bit given by github
 URL = URL.strip('/') # stripping last bit given by github
 URL = URL.strip('.git') # stripping last bit given by github
 TAG = URL.split('/')[-1] # heuristic to get the project name
+print('TAG =', TAG)
 
 if 'framagit' in URL:
     ROOT = URL + '/wikis/'
 else:
     ROOT = URL + '/wiki/'
 print('ROOT =', ROOT)
-
+ROOT = 'https://framagit.org/laurentperrinet/wikitags/wikis/'
+print('ROOT =', ROOT)
 SEED = 42
 BANDS = ['Talking Heads',
-         'Dépèche Mode',
+         # 'Dépèche Mode',
          'Dead Kennedys',
          'Neil Young',
          'Bob Dylan',
