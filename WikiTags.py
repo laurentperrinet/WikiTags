@@ -41,6 +41,10 @@ VERB = False # verbose?
 N_X, N_Y = 5, 8 # columns, rows
 N_X, N_Y = 8, 13 # columns, rows
 N_X, N_Y = 5, 7 # columns, rows
+
+output_dir = './output/'
+from pathlib import Path
+Path(output_dir).mkdir(parents=True, exist_ok=True)
 EXT = '.png'
 RESULT = 'grid' # name of the output file
 MARGIN = 0.05 # margin around each axis
@@ -140,4 +144,4 @@ with tempfile.TemporaryDirectory() as tmp:
         RESULT_ += EXT
 
         plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0, hspace=MARGIN/2, wspace=MARGIN/2)
-        plt.savefig(RESULT_, dpi=dpi)
+        plt.savefig(Path(output_dir) /RESULT_, dpi=dpi)
