@@ -33,7 +33,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Creating the WikiTags
       run: |
-        python WikiTags.py- name: Push to master
+        python WikiTags.py
     - name: Push to master
       uses: tcitry/push-to-master@v1.0
 
