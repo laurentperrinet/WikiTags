@@ -34,10 +34,6 @@ jobs:
     - name: Creating the WikiTags
       run: |
         python WikiTags.py
-    - name: Uplaoding results
-      uses: actions/upload-artifact@master
-      with:
-        name: Image of QR codes
-        path: output
-
-        
+    - uses: mikeal/publish-to-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
