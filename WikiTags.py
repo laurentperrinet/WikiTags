@@ -21,6 +21,7 @@ print('ROOT =', ROOT)
 # ROOT = 'https://framagit.org/laurentperrinet/wikitags/wikis/'
 # print('ROOT =', ROOT)
 SEED = 42
+# SEED = None
 BANDS = ['Talking Heads',
          # 'Dépèche Mode',
          'Dead Kennedys',
