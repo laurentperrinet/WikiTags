@@ -33,7 +33,10 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Creating the WikiTags
       run: |
+        git status
+        rm -fr output
         python WikiTags.py
+        git status
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
